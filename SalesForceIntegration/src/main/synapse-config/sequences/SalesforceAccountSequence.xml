@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="SalesforceAccountSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log>
+        <property name="AccountSequenceLog1" value="Sequence Started"/>
+    </log>
+    <property name="sObjectType" scope="default" type="STRING" value="Account"/>
+    <sequence key="MainSequence"/>
+    <log>
+        <property name="AccountSequenceLog2" value="Sequenec end"/>
+    </log>
+</sequence>

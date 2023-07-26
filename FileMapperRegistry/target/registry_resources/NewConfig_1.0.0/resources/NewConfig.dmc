@@ -1,0 +1,20 @@
+map_S_root_S_root = function(){ 
+var outputroot={};
+
+var count_i_inputroot_0550ddf5_9480_41b1_a2da_8e6344183a11 = 0;
+outputroot =  [];
+
+for(i_inputroot_0550ddf5_9480_41b1_a2da_8e6344183a11 in inputroot){
+outputroot[count_i_inputroot_0550ddf5_9480_41b1_a2da_8e6344183a11] =  {};
+outputroot[count_i_inputroot_0550ddf5_9480_41b1_a2da_8e6344183a11].name = inputroot[i_inputroot_0550ddf5_9480_41b1_a2da_8e6344183a11].name;
+outputroot[count_i_inputroot_0550ddf5_9480_41b1_a2da_8e6344183a11].Id = inputroot[i_inputroot_0550ddf5_9480_41b1_a2da_8e6344183a11].Id;
+outputroot[count_i_inputroot_0550ddf5_9480_41b1_a2da_8e6344183a11].type = inputroot[i_inputroot_0550ddf5_9480_41b1_a2da_8e6344183a11].type;
+
+count_i_inputroot_0550ddf5_9480_41b1_a2da_8e6344183a11++;
+}
+return outputroot;
+};
+
+
+
+

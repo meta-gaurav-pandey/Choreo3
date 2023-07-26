@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="SalesforceSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log>
+        <property name="StartLog" value="In the Salesforce Sequence"/>
+    </log>
+    <property name="sObjectType" scope="default" type="STRING" value="AccountScheduler"/>
+    <property expression="get-property('SYSTEM_TIME')" name="currentTime" scope="default" type="STRING"/>
+    <script language="js"><![CDATA[var currentTime = mc.getProperty('currentTime');
+    var timestamp = new Date(parseInt(currentTime));
+  
+    mc.setProperty('formattedTime1', timestamp.toISOString().replace('Z','+0000'));]]></script>
+    <script language="js"><![CDATA[var currentTime = new Date();
+ currentTime.setMinutes(currentTime.getMinutes()-10);
+
+    mc.setProperty('formattedTime2', currentTime.toISOString().replace('Z','+0000'));]]></script>
+    <script language="js"><![CDATA[var from = mc.getProperty('formattedTime2');
+          var To = mc.getProperty('formattedTime1');
+        var query = "SELECT Id, Name FROM Account WHERE LastModiFiedDate >=" + from ;<!--+ " and LastModiFiedDate < " + To;-->
+        print(query);
+        mc.setProperty('salesforceQuery', query.toString());]]></script>
+    <!-- 
+    <property name="date" expression="xs:dateTime($ctx:formattedTime2)" />
+<property name="duration" value="PT1H" />
+<property name="newDate" expression="fn:subtract-dayTimeDuration($ctx:date, xs:dayTimeDuration($ctx:duration))" />
+<property name="newTimestamp" expression="fn:format-dateTime($ctx:newDate, '[Y0001]-[M01]-[D01]T[H01]:[m01]:[s01].[f001]Z')" /> 
+    <property expression="concat('SELECT Id, Name,LastModiFiedDate FROM Account WHERE LastModiFiedDate > \'', get-property('formattedTime2'), '\'')" name="salesforceQuery" scope="default" type="STRING"/>-->
+    <log>
+        <property expression="get-property('salesforceQuery')" name="query"/>
+    </log>
+    <salesforcerest.query configKey="SALESFORCEREST_CONNECTION_1">
+        <queryString>{get-property('salesforceQuery')}</queryString>
+    </salesforcerest.query>
+    <log>
+        <property name="EndLog" value="Salesforce Retrival Finish"/>
+        <property expression="get-property('formattedTime1')" name="SalesforceLog1"/>
+        <property expression="get-property('formattedTime2')" name="SalesforceLog2"/>
+        <property expression="get-property('salesforceQuery')" name="salesforcelog3"/>
+    </log>
+    <sequence key="MainSequence"/>
+</sequence>

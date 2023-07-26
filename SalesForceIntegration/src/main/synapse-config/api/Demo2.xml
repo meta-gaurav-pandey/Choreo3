@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/hello" name="Demo2" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="GET">
+        <inSequence>
+            <payloadFactory media-type="text">
+                <format>@prefix base: &lt;http://example.com/&gt; .&#xd;
+@prefix dbo:  &lt;http://example.org/&gt; .&#xd;
+@prefix rdf:  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .&#xd;
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .&#xd;
+@prefix xsd:  &lt;http://www.w3.org/2001/XMLSchema#&gt; .&#xd;
+&#xd;
+&lt;base:Divya_Prakash&gt;  rdf:type  &lt;http://example.org//Person&gt; ;&#xd;
+        &lt;dbo:id&gt;    "0015i00000PVs7oAAD" , "0015i00000PVs6vAAD" ;&#xd;
+        &lt;dbo:name&gt;  "Divya Prakash" ;&#xd;
+        &lt;dbo:type&gt;  "Account" .&#xd;
+&#xd;
+dbo:name  rdf:type    rdf:Property ;&#xd;
+        rdfs:comment  "A person's name" ;&#xd;
+        rdfs:domain   dbo:Person ;&#xd;
+        rdfs:range    xsd:string .&#xd;
+&#xd;
+&lt;base:Surjeet_Singh&gt;  rdf:type  &lt;http://example.org//Person&gt; ;&#xd;
+        &lt;dbo:id&gt;    "0015i00000PVsK5AAL" ;&#xd;
+        &lt;dbo:name&gt;  "Surjeet Singh" ;&#xd;
+        &lt;dbo:type&gt;  "Account" .&#xd;
+&#xd;
+&lt;base:Dipanshu_Vidhyarthi&gt;&#xd;
+        rdf:type    &lt;http://example.org//Person&gt; ;&#xd;
+        &lt;dbo:id&gt;    "0015i00000PVs7qAAD" ;&#xd;
+        &lt;dbo:name&gt;  "Dipanshu Vidhyarthi" ;&#xd;
+        &lt;dbo:type&gt;  "Account" .&#xd;
+&#xd;
+&lt;base:Mukul_Jangid&gt;  rdf:type  &lt;http://example.org//Person&gt; ;&#xd;
+        &lt;dbo:id&gt;    "0015i00000PVs96AAD" ;&#xd;
+        &lt;dbo:name&gt;  "Mukul Jangid" ;&#xd;
+        &lt;dbo:type&gt;  "Account" .&#xd;
+&#xd;
+&lt;base:Deepanshu_Saini&gt;&#xd;
+        rdf:type    &lt;http://example.org//Person&gt; ;&#xd;
+        &lt;dbo:id&gt;    "0015i00000PVs6xAAD" ;&#xd;
+        &lt;dbo:name&gt;  "Deepanshu Saini" ;&#xd;
+        &lt;dbo:type&gt;  "Account" .&#xd;
+&#xd;
+&lt;base:Raj_Rajeshwar&gt;  rdf:type  &lt;http://example.org//Person&gt; ;&#xd;
+        &lt;dbo:id&gt;    "0015i00000PVsK7AAL" ;&#xd;
+        &lt;dbo:name&gt;  "Raj Rajeshwar" ;&#xd;
+        &lt;dbo:type&gt;  "Account" .&#xd;
+&#xd;
+dbo:Person  rdf:type  rdfs:Class ;&#xd;
+        rdfs:comment  "A person entity" .&#xd;
+&#xd;
+dbo:type  rdf:type    rdf:Property ;&#xd;
+        rdfs:comment  "A person's type" ;&#xd;
+        rdfs:domain   dbo:Person ;&#xd;
+        rdfs:range    xsd:string .&#xd;
+&#xd;
+&lt;base:Gaurav_Pandey&gt;  rdf:type  &lt;http://example.org//Person&gt; ;&#xd;
+        &lt;dbo:id&gt;    "0015i00000PVs7pAAD" , "0015i00000PVs6wAAD" ;&#xd;
+        &lt;dbo:name&gt;  "Gaurav Pandey" ;&#xd;
+        &lt;dbo:type&gt;  "Account" .&#xd;
+&#xd;
+dbo:Id  rdf:type      rdf:Property ;&#xd;
+        rdfs:comment  "A person's description" ;&#xd;
+        rdfs:domain   dbo:Person ;&#xd;
+        rdfs:range    xsd:string .&#xd;
+&#xd;
+&lt;base:Sahil_Khan&gt;  rdf:type  &lt;http://example.org//Person&gt; ;&#xd;
+        &lt;dbo:id&gt;    "0015i00000PVsK6AAL" ;&#xd;
+        &lt;dbo:name&gt;  "Sahil Khan" ;&#xd;
+        &lt;dbo:type&gt;  "Account" .&#xd;
+</format>
+                <args/>
+            </payloadFactory>
+            <!--  <property name="messageType" scope="axis2" type="STRING" value="application/x-turtle"/> -->
+            <property name="ContentType" scope="default" type="STRING" value="application/x-turtle"/>
+            <call blocking="true">
+                <endpoint>
+                    <http method="post" statistics="enable" trace="enable" uri-template="http://localhost:7200/repositories/Graph_Java_Testing/rdf-graphs/service?graph=http://test.com/graphs/Zenia">
+                        <suspendOnFailure>
+                            <initialDuration>-1</initialDuration>
+                            <progressionFactor>-1</progressionFactor>
+                            <maximumDuration>0</maximumDuration>
+                        </suspendOnFailure>
+                        <markForSuspension>
+                            <retriesBeforeSuspension>0</retriesBeforeSuspension>
+                        </markForSuspension>
+                    </http>
+                </endpoint>
+            </call>
+        </inSequence>
+        <outSequence>
+            <log level="full"/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+</api>

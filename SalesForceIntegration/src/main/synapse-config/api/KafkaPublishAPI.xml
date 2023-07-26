@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/kafkaIntegration" name="KafkaPublishAPI" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST">
+        <inSequence>
+            <log>
+                <property name="Start Logger" value="Main Sequence Started"/>
+            </log>
+            <kafkaTransport.init/>
+            <kafkaTransport.publishMessages>
+                <topic>jsonTopic</topic>
+            </kafkaTransport.publishMessages>
+            <log>
+                <property name="Publisher End logger" value="Message successfully pushed into kafka topic"/>
+            </log>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>
