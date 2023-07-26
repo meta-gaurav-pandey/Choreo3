@@ -22,7 +22,9 @@ endpoints:
   schemaFilePath: SalesForceIntegration/src/main/resources/metadata/KafkaPublishAPI_swagger.yaml
 
 
+version: 0.1
 
+# +required List of endpoints to create
 endpoints:
 
   name: LinkedInDataIntegration
@@ -43,6 +45,9 @@ endpoints:
   schemaFilePath: SalesForceIntegration/src/main/resources/metadata/LinkedInDataIntegration_swagger.yaml
 
 
+version: 0.1
+
+# +required List of endpoints to create
 endpoints:
 
   name: SalesforceApi
@@ -63,6 +68,9 @@ endpoints:
   schemaFilePath: SalesForceIntegration/src/main/resources/metadata/SalesforceApi_swagger.yaml
 
 
+version: 0.1
+
+# +required List of endpoints to create
 endpoints:
 
   name: XmlIntegration
@@ -83,7 +91,10 @@ endpoints:
   schemaFilePath: SalesForceIntegration/src/main/resources/metadata/XmlIntegration_swagger.yaml
 
 
- endpoints:
+version: 0.1
+
+# +required List of endpoints to create
+endpoints:
 
   name: ZoomInfoDataIntegration
   # +required Numeric port value that gets exposed via this endpoint
