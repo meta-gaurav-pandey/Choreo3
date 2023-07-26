@@ -22,12 +22,9 @@ endpoints:
   schemaFilePath: SalesForceIntegration/src/main/resources/metadata/KafkaPublishAPI_swagger.yaml
 
 
-version: 0.1
 
-# +required List of endpoints to create
-endpoints:
 
-  name: LinkedInDataIntegration
+- name: LinkedInDataIntegration
   # +required Numeric port value that gets exposed via this endpoint
   port: 8290
   # +required Type of the traffic this endpoint is accepting. Example: REST, GraphQL, etc.
@@ -45,12 +42,8 @@ endpoints:
   schemaFilePath: SalesForceIntegration/src/main/resources/metadata/LinkedInDataIntegration_swagger.yaml
 
 
-version: 0.1
 
-# +required List of endpoints to create
-endpoints:
-
-  name: SalesforceApi
+- name: SalesforceApi
   # +required Numeric port value that gets exposed via this endpoint
   port: 8290
   # +required Type of the traffic this endpoint is accepting. Example: REST, GraphQL, etc.
@@ -68,12 +61,9 @@ endpoints:
   schemaFilePath: SalesForceIntegration/src/main/resources/metadata/SalesforceApi_swagger.yaml
 
 
-version: 0.1
 
-# +required List of endpoints to create
-endpoints:
 
-  name: XmlIntegration
+- name: XmlIntegration
   # +required Numeric port value that gets exposed via this endpoint
   port: 8290
   # +required Type of the traffic this endpoint is accepting. Example: REST, GraphQL, etc.
@@ -91,12 +81,9 @@ endpoints:
   schemaFilePath: SalesForceIntegration/src/main/resources/metadata/XmlIntegration_swagger.yaml
 
 
-version: 0.1
 
-# +required List of endpoints to create
-endpoints:
 
-  name: ZoomInfoDataIntegration
+- name: ZoomInfoDataIntegration
   # +required Numeric port value that gets exposed via this endpoint
   port: 8290
   # +required Type of the traffic this endpoint is accepting. Example: REST, GraphQL, etc.
